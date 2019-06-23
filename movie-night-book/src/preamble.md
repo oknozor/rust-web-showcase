@@ -1,5 +1,8 @@
 # Preamble
 
+This along this book we will write a web application in rust, you can find the final result in [this repository](https://github.com/oknozor/rust-web-showcase).
+For the sake of conciseness we will sometimes skip some boiler plate code, if you get lost, don't hesitate to refer to the repository.
+
 ## Why this book ? 
 
 For those of you who are already familiar with the growing rust ecosystem, you might be aware that there is a ton of awesome resources, tutorial, librairies andframework to create web application with rust. Rust is growing balzingly fast and it can be quite confusing when you start learning the language.

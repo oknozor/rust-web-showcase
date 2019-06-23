@@ -1,3 +1,4 @@
+---
 language: rust
 rust:
   - stable
@@ -5,13 +6,25 @@ rust:
 matrix:
   allow_failures:
     - rust: nightly
-  fast_finish: true
+
+cache:
+  - cargo
+
+before_script:
+  - (test -x $HOME/.cargo/bin/cargo-install-update || cargo install cargo-update)
+  - (test -x $HOME/.cargo/bin/mdbook || cargo install --vers "^0.3" mdbook)
+  - cargo install-update -a
+
+script:
+  - mdbook build movie-night-book && mdbook test movie-night-book
 
 deploy:
   provider: pages
   skip-cleanup: true
   github-token: $GH_TOKEN
-  local-dir: movie-night-book
+  local-dir: movie-night-book/book
   keep-history: false
+  repo: oknozor/oknozor.github.io
   on:
     branch: master
+    fast_finish: true

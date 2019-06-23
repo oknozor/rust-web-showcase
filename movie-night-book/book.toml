@@ -2,5 +2,5 @@
 authors = ["Paul Delafosse"]
 multilingual = false
 src = "src"
-title = "Creating a Rust Web App from A to Z"
+title = "Rust web showcase"
 description = ""

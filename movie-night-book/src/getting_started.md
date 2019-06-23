@@ -29,13 +29,27 @@ members = [
 ]
 ```
 
-Finally you can create all the crates needed : 
+You can then create all the crates needed : 
 
 ```sh
 $ cargo new --lib movie-night-common
 $ cargo new --lib movie-night-db
 $ cargo new movie-night-backend
 $ cargo new movie-night-frontend
+```
+
+Least but not last, lets add a travis build, just crate the following `.travis.yml` at the root of your project : 
+
+```yaml
+language: rust
+rust:
+  - stable
+
+matrix:
+  allow_failures:
+    - rust: nightly
+  fast_finish: true
+
 ```
 
 
