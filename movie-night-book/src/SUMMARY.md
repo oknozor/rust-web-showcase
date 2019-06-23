@@ -8,4 +8,3 @@
 - [Getting started](./getting_started.md)
 - [Writting a common crate](./common_crate.md)
 - [Writting the database library](./db_crate.md)
-- [Setting up the backend ](./backend.md)

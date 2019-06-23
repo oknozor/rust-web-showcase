@@ -20,7 +20,7 @@ pub struct SearchResultMovieDto {
     pub image_url: Option<String>,
 }
 
-/// Add a new movie
+/// Add a new movie by its movie database id
 #[derive(Serialize, Deserialize, Debug)]
 pub struct NewMovieDto {
     pub tmdb_id: i32,
