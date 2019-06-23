@@ -1,0 +1,6 @@
+[book]
+authors = ["Paul Delafosse"]
+multilingual = false
+src = "src"
+title = "Creating a Rust Web App from A to Z"
+description = ""
