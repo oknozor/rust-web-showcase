@@ -25,6 +25,7 @@ deploy:
   local-dir: movie-night-book/book
   keep-history: false
   repo: oknozor/oknozor.github.io
-  on:
-    branch: master
-    fast_finish: true
+  branches:
+    only:
+      - master
+  fast_finish: true
