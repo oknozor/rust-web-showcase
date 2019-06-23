@@ -19,27 +19,7 @@ That's it you can run `cargo build` and start writing the common crate at the sa
 
 For now just append the folowing to `movie-night-common/lib.rs`
 
-```rust
-extern crate serde;
-use serde::{Deserialize, Serialize};<Paste>
-
-
-/// User without its password
-#[derive(Serialize, Deserialize, Debug)]
-pub struct UserDto {
-    pub id: i32,
-    pub nickname: String,
-    pub email: String,
-}
-
-/// Add a new user
-#[derive(Serialize, Deserialize, Debug)]
-pub struct NewUserDto {
-    pub nickname: String,
-    pub email: String,
-    pub password: String,
-}
-```
+{{#include common.rs}}
 
 As you can see we have two Data transfer object here, one for retrieving user with there ids and the other specifically for posting new users and persist there password in database. 
 Quite simple actually, for those coming from the Java world, the serde `Serialize` and `Deserialize` annotation can be compared to Jackson.
