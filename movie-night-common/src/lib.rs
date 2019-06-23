@@ -43,7 +43,7 @@ pub struct NewUserMovieDto {
 /// User without its password
 #[derive(Serialize, Deserialize, Debug)]
 pub struct UserDto {
-    pub id: Option<i32>,
+    pub id: i32,
     pub nickname: String,
     pub email: String,
 }
