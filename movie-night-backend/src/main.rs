@@ -1,25 +1,16 @@
 #[macro_use]
-extern crate serde_json;
-#[macro_use]
 extern crate serde;
-use actix_web::{
-    http, middleware, web, App, Error, HttpRequest, HttpResponse, HttpServer, Responder,
-};
+extern crate serde_json;
+use actix_web::{web, App, Error, HttpResponse, HttpServer};
 use model::users::{NewUserDto, UserDto};
-use movie_night_db::get_conn;
 use movie_night_db::init_pool;
-use movie_night_db::users::*;
 use movie_night_db::Pool;
 
 pub mod model;
 
-fn user_by_id(pool: web::Data<Pool>, user_id: web::Path<i32>) -> HttpResponse {
-    movie_night_db::users::find_by_id(*user_id.as_ref(), pool.get_ref());
-    HttpResponse::Ok().json(UserDto {
-        id: *user_id.as_ref(),
-        nickname: "bob".to_string(),
-        email: "bob@bob.com".to_string(),
-    }) // <- send response
+fn user_by_id(pool: web::Data<Pool>, user_id: web::Path<i32>) -> Result<HttpResponse, Error> {
+    let user = movie_night_db::users::find_by_id(*user_id.as_ref(), pool.get_ref());
+    Ok(HttpResponse::Ok().json(UserDto::from(user)))
 }
 
 /// This handler uses json extractor
