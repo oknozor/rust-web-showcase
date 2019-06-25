@@ -1,4 +1,4 @@
-# What we will build
+# (WIP) What we will build
 
 
 Before we dive into the code let's take a moment to review the app specification. 

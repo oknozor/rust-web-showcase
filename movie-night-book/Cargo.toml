@@ -5,4 +5,5 @@ authors = ["okno <paul.delafosse@protonmail.com>"]
 edition = "2018"
 
 [dependencies]
-serde = { version = "1.0", features = ["derive"] }
+movie-night-db = {path = "../movie-night-db"}
+movie-night-backend = {path = "../movie-night-backend"}

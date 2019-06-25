@@ -1,5 +1,14 @@
 # Getting started
 
+## Seting up the environment
+
+You will need to install some tools along the book(diesel, mdbook...etc) but for know we will keep it simple.
+
+If you did not installed rust and cargo yet, head up to [the official installation instructions](https://www.rust-lang.org/tools/install) or install it via your favorite package manager. 
+
+You will probably want to install linter and formatter for your favorite IDE, all you need is [here](https://www.rust-lang.org/tools)
+
+## (WIP) 
 Before we dive into the HTTP stack and start the interesting stuff there are some boiler plate to be written. 
 Both our frontend app and backend app will share some of the datastructure, exchanging user, movies ... ect.
 
@@ -22,7 +31,6 @@ Then we shall edit the Cargo file so it looks like this :
 [workspace]
 
 members = [
-    "movie-night-common",
     "movie-night-db",
     "movie-night-backend",
     "movie-night-frontend",
@@ -32,7 +40,6 @@ members = [
 You can then create all the crates needed : 
 
 ```sh
-$ cargo new --lib movie-night-common
 $ cargo new --lib movie-night-db
 $ cargo new movie-night-backend
 $ cargo new movie-night-frontend
