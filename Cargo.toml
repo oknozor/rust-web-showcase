@@ -1,10 +1,10 @@
 [workspace]
 
 members = [
-    "movie-night-common",
     "movie-night-db",
     "movie-night-backend",
     "movie-night-frontend",
     "movie-night-book",
 ]
+
 
