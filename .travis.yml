@@ -16,16 +16,11 @@ before_script:
   - cargo install-update -a
 
 script:
-  - mdbook build movie-night-book && mdbook test movie-night-book
-
+  - mdbook build movie-night-book
 deploy:
   provider: pages
   skip-cleanup: true
   github-token: $GH_TOKEN
   local-dir: movie-night-book/book
   keep-history: false
-  repo: oknozor/oknozor.github.io
-  branches:
-    only:
-      - master
   fast_finish: true

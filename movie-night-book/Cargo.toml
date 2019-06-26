@@ -1,9 +1,0 @@
-[package]
-name = "movie-night-book"
-version = "0.1.0"
-authors = ["okno <paul.delafosse@protonmail.com>"]
-edition = "2018"
-
-[dependencies]
-movie-night-db = {path = "../movie-night-db"}
-movie-night-backend = {path = "../movie-night-backend"}
