@@ -12,5 +12,5 @@ actix-web = "1.0"
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
 
-futures = "0.1"
+futures = "0.1.22"
 bytes = "0.4"

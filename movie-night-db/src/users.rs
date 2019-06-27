@@ -3,8 +3,6 @@ use super::schema::users;
 use super::schema::users::dsl::*;
 use diesel::prelude::*;
 
-use super::Pool;
-
 #[derive(Identifiable, Queryable, PartialEq, Debug)]
 pub struct User {
         pub id: i32,
@@ -21,22 +19,19 @@ pub struct NewUser {
         pub password_hash: String,
 }
 
-pub fn find_by_id(user_id: i32, pool: &Pool) -> User {
-        let conn: &PgConnection = &pool.get().expect("Unable to connect to the database");
-        users.find(user_id)
-                .get_result::<User>(conn)
-                .unwrap_or_else(|_| panic!("User with id {} not found", user_id))
+impl User {
+        pub fn by_id(user_id: i32, conn: &PgConnection) -> QueryResult<User> {
+                users.find(user_id).get_result::<User>(conn)
+        }
+
+        pub fn all(conn: &PgConnection) -> QueryResult<Vec<User>> {
+                users.load::<User>(conn)
+        }
+
+        pub fn insert(new_user: &NewUser, conn: &PgConnection) -> QueryResult<User> {
+                diesel::insert_into(users::table)
+                        .values(new_user)
+                        .get_result(conn)
+        }
 }
 
-pub fn all(pool: &Pool) -> Vec<User> {
-        let conn: &PgConnection = &pool.get().expect("Unable to connect to the database");
-        users.load::<User>(conn).expect("Error loading users")
-}
-
-pub fn insert(new_user: &NewUser, pool: &Pool) -> User {
-        let conn: &PgConnection = &pool.get().expect("Unable to connect to the database");
-        diesel::insert_into(users::table)
-                .values(new_user)
-                .get_result(conn)
-                .expect("Error saving new users")
-}
