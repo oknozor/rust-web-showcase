@@ -1,11 +1,10 @@
 #[macro_use]
 extern crate diesel;
 
-
-use diesel::r2d2::PooledConnection;
-use diesel::r2d2::ConnectionManager;
 use diesel::pg::PgConnection;
+use diesel::r2d2::ConnectionManager;
 use diesel::r2d2::PoolError;
+use diesel::r2d2::PooledConnection;
 use diesel::result::Error as DieselError;
 use std::error::Error;
 use std::ops::Deref;
@@ -14,7 +13,6 @@ use users::*;
 /// Just a handy type alias for Postgresql connection pool
 pub type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
 type PgPooledConnection = PooledConnection<ConnectionManager<PgConnection>>;
-
 
 mod schema;
 pub mod users;
@@ -37,7 +35,7 @@ pub fn user_by_id(user_id: i32, pool: &Pool) -> Result<User, String> {
 }
 
 fn map_db_err(err: DieselError) -> String {
-   match err {
+    match err {
         DieselError::DatabaseError(_kind, _info) => String::from(_info.message()),
         DieselError::NotFound => String::from("Resource not found in database"),
         _ => String::from("Unkown database error"),
