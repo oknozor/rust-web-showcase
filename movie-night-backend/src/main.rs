@@ -20,12 +20,25 @@ fn user_by_id(
 ) -> impl Future<Item = HttpResponse, Error = Error> {
     web::block(move || movie_night_db::user_by_id(*user_id.as_ref(), &pool.get_ref())).then(
         |resp| match resp {
-            Ok(user) => Ok(HttpResponse::Ok().json(UserDto::from(user))),
+            Ok(user) => Ok(HttpResponse::Ok().json(UserDto::from(&user))),
             Err(err) => Ok(HttpResponse::InternalServerError().json(JsonError {
                 message: err.to_string(),
             })),
         },
     )
+}
+
+fn all_users(pool: web::Data<Pool>) -> impl Future<Item = HttpResponse, Error = Error> {
+    web::block(move || movie_night_db::all_users(&pool.get_ref())).then(|resp| match resp {
+        Ok(users) => {
+            let user_dtos: Vec<UserDto> = users.iter().map(|user| UserDto::from(user)).collect();
+
+            Ok(HttpResponse::Ok().json(user_dtos))
+        }
+        Err(err) => Ok(HttpResponse::InternalServerError().json(JsonError {
+            message: err.to_string(),
+        })),
+    })
 }
 
 fn post_user(pool: web::Data<Pool>, new_user: web::Json<NewUserDto>) {
@@ -48,6 +61,7 @@ fn main() -> std::io::Result<()> {
         App::new()
             .data(pool.clone())
             .service(web::resource("/users/{id}").route(web::get().to_async(user_by_id)))
+            .service(web::resource("/users").route(web::get().to_async(all_users)))
     };
 
     HttpServer::new(app).bind("localhost:8088")?.run()

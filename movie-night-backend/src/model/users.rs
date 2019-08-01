@@ -25,12 +25,12 @@ impl Into<NewUser> for NewUserDto {
         }
     }
 }
-impl From<User> for UserDto {
-    fn from(user: User) -> Self {
+impl From<&User> for UserDto {
+    fn from(user: &User) -> Self {
         UserDto {
             id: user.id,
-            nickname: user.nick,
-            email: user.email,
+            nickname: user.nick.clone(),
+            email: user.email.clone(),
         }
     }
 }

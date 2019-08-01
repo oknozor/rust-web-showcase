@@ -10,12 +10,13 @@ use std::error::Error;
 use std::ops::Deref;
 use users::*;
 
-/// Just a handy type alias for Postgresql connection pool
+/// A handy type alias for Postgresql connection pool
 pub type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
 type PgPooledConnection = PooledConnection<ConnectionManager<PgConnection>>;
 
 mod schema;
 pub mod users;
+
 /// Build the connnection manager and return the connection pool
 pub fn init_pool(database_url: &str) -> Result<Pool, PoolError> {
     let manager = ConnectionManager::<PgConnection>::new(database_url);
