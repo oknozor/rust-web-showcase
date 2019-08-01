@@ -1,0 +1,370 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Rust web showcase</title>
+        
+        <meta name="robots" content="noindex" />
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li><a href="preamble.html"><strong aria-hidden="true">1.</strong> Preamble</a></li><li><a href="what_we_will_build.html"><strong aria-hidden="true">2.</strong> What we will build</a></li><li><a href="the_backend_stack.html"><strong aria-hidden="true">3.</strong> The backend stack</a></li><li><a href="getting_started.html"><strong aria-hidden="true">4.</strong> Getting started</a></li><li><a href="common_crate.html"><strong aria-hidden="true">5.</strong> Writting a common crate</a></li><li><a href="db_crate.html"><strong aria-hidden="true">6.</strong> Writting the database library</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Rust web showcase</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#preamble" id="preamble">Preamble</a></h1>
+<p>This along this book we will write a web application in rust, you can find the final result in <a href="https://github.com/oknozor/rust-web-showcase">this repository</a>.
+For the sake of conciseness we will sometimes skip some boiler plate code, if you get lost, don't hesitate to refer to the repository.</p>
+<h2><a class="header" href="#why-this-book-" id="why-this-book-">Why this book ?</a></h2>
+<p>For those of you who are already familiar with the growing rust ecosystem, you might be aware that there is a ton of awesome resources, tutorial, librairies andframework to create web application with rust. Rust is growing balzingly fast and it can be quite confusing when you start learning the language.</p>
+<p>At the moment there are 26,952 crates (a crate is a rust library) aivalable on <a href="https://www.crates.io/">crates.io</a>, and probably a new web framework every week. In a way it's awesome to see rust growing bigger every day but it makes it difficult to catch up. </p>
+<p>If some rust web framework are quite mature and perfectly viable for production use, some other are too young. 
+On the frontend side Wasm is almost certainly the next big thing but it's not stable yet.</p>
+<p>The goal of this book is to guides you through building a full web application with the current available tools. It is not another hello world, we will try to write a real web application, from the database layer to the frontend.
+Think of it as the Java <a href="https://www.oracle.com/technetwork/java/index-136650.html">petstore</a> of Rust. </p>
+<p>We will try to enforce some good practice along the way, showcase available tooling..etc. </p>
+<h2><a class="header" href="#prerequisites" id="prerequisites">Prerequisites</a></h2>
+<p>Before we start building the application you shall be familiar with rust if you are not already. The best way to get started is most certainly <a href="https://www.rust-lang.org/book">The Rust Programing Language</a> book. For those of you who prefer practice over theory, the rust offictial documentation got you covered with <a href="https://doc.rust-lang.org/stable/rust-by-example/">Rust by  example</a>. </p>
+<p>Besides knowing a bit of rust, you probably want to know more about the rust web ecosystem before starting this book. We will use <a href="https://actix.rs/">Actix</a> for the backend and <a href="https://github.com/DenisKolodin/yew">Yew</a> to build the frontend application. If you want to know more about the current state of the art regarding web development in Rust check <a href="http://www.arewewebyet.org/">Are We Web Yet</a> to get a grasp of what's currently aivalable. </p>
+<h1><a class="header" href="#wip-what-we-will-build" id="wip-what-we-will-build">(WIP) What we will build</a></h1>
+<p>Before we dive into the code let's take a moment to review the app specification. </p>
+<h2><a class="header" href="#domain" id="domain">Domain</a></h2>
+<ul>
+<li>
+<p>The application we will build is a kind of meetup/social network for cinephils</p>
+</li>
+<li>
+<p>The idea is to plan a movie night with a group of friends, every attendee will secretly pick a movie and one among them will be randomly picked by the backend at the last moment. </p>
+</li>
+<li>
+<p>In order to keep the suspens for as long as possible, user get notified about who have been choosed, not which movie.</p>
+</li>
+<li>
+<p>After that the group watch the choosen movie and enjoy.</p>
+</li>
+<li>
+<p>Users can rate the movie they watched already.</p>
+</li>
+<li>
+<p>Users can then plan a new movie night.</p>
+</li>
+<li>
+<p>Users that have already been choosen are not allowed to pick a new moovie until every one has been choosen ones. </p>
+</li>
+<li>
+<p>Users can access their movie night history and see which movies have already been choosen and by who. </p>
+</li>
+<li>
+<p>Users can post comments on their group lobby.</p>
+</li>
+<li>
+<p>Users can bookmark movies. </p>
+</li>
+<li>
+<p>Users can search movies. </p>
+</li>
+<li>
+<p>When all users in a group have been choosen ones, everyone on the group get to choose a new movie for the next event. </p>
+</li>
+</ul>
+<h1><a class="header" href="#choosing-the-stack" id="choosing-the-stack">Choosing the stack</a></h1>
+<p>Know that we have an overview of what we will build, let us think a moment about what we will need.</p>
+<h2><a class="header" href="#the-database" id="the-database">The database</a></h2>
+<p>We will need a way to store our users, movies, group of user ...etc. There is no room for debate here, the current standard is postgresql.</p>
+<p>In web application development rarely write raw SQL and usually uses ORMs. Rust doesn't have many of them yet (see <a href="http://www.arewewebyet.org/topics/database/#orms">here</a>) but <a href="http://diesel.rs/">diesel</a> is very mature already.</p>
+<p>If you come from the Java world, think of it as a drop in replacement for hibernate + liquidbase/flyway, it handles both SQL migration and mapping with your datastructure. </p>
+<h2><a class="header" href="#the-http-stack" id="the-http-stack">The Http stack</a></h2>
+<p>Nowadays the idiomatic way to build a HTTP application is to make a restfull api for the backend application and then build a frontend with a javascript framework.
+On the backend side the state of the art is to conform to the <a href="http://spec.openapis.org/oas/v3.0.2">OpenApi Standard</a> wich is a really long and boring specification. <a href="https://blog.octo.com/en/design-a-rest-api/">This article</a> sumarize it quite well and will try to conform as much as we can to its guidelines.</p>
+<p>Now we want to pick up the best rust framework to do it. This is where it gets complicated... </p>
+<p>In other languages the most reliable framworks as been identified a long time ago, some of them are backed by big compagnies: Spring, Django, Symphony...etc.
+They are stable, actively maintained and have large communities.<br />
+Well the rust ecosystem is not that mature yet. As I am writing this line, there is about  <a href="http://www.arewewebyet.org/topics/frameworks/">20 web framework available</a>, and there will probably be more tomorow. Although we cannot predict wich will last, two of them are getting their head out of the pack : <a href="https://rocket.rs/">Rocket</a> which is fairly easy to use, annotation driven and <a href="https://actix.rs/">Actix</a> based on a actor system model and providing async support.</p>
+<p>Both would fit our needs here, but we are trying to build the petstore of rust, and Rocket as two major issue: it's using the nighly rust release (aka unstable) and it does not support async operations. So Actix it will be.</p>
+<h1><a class="header" href="#getting-started" id="getting-started">Getting started</a></h1>
+<h2><a class="header" href="#seting-up-the-environment" id="seting-up-the-environment">Seting up the environment</a></h2>
+<p>You will need to install some tools along the book(diesel, mdbook...etc) but for know we will keep it simple.</p>
+<p>If you did not installed rust and cargo yet, head up to <a href="https://www.rust-lang.org/tools/install">the official installation instructions</a> or install it via your favorite package manager. </p>
+<p>You will probably want to install linter and formatter for your favorite IDE, all you need is <a href="https://www.rust-lang.org/tools">here</a></p>
+<h2><a class="header" href="#wip" id="wip">(WIP)</a></h2>
+<p>Before we dive into the HTTP stack and start the interesting stuff there are some boiler plate to be written. 
+Both our frontend app and backend app will share some of the datastructure, exchanging user, movies ... ect.</p>
+<p>On the other hand we really don't want the frontend to access the database directly. 
+We will implement a shared model to pass data between our backend and a database library only accessible to the backend.
+We will then implement the HTTP rest api with Actix. 
+And finally build the frontend application with Yew.</p>
+<p>That's a lot of work so we better keep thing organized, we will use the <a href="https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html">cargo workspace</a> feature to keep everything in a single repository but still manage every crate separatly: </p>
+<h2><a class="header" href="#seting-up-the-environment-1" id="seting-up-the-environment-1">Seting up the environment</a></h2>
+<pre><code class="language-sh">$ mkdir movie-night
+$ touch movie-night/Cargo.toml
+</code></pre>
+<p>Then we shall edit the Cargo file so it looks like this : </p>
+<pre><code class="language-toml">[workspace]
+
+members = [
+    &quot;movie-night-db&quot;,
+    &quot;movie-night-backend&quot;,
+    &quot;movie-night-frontend&quot;,
+]
+</code></pre>
+<p>You can then create all the crates needed : </p>
+<pre><code class="language-sh">$ cargo new --lib movie-night-db
+$ cargo new movie-night-backend
+$ cargo new movie-night-frontend
+</code></pre>
+<p>Least but not last, lets add a travis build, just crate the following <code>.travis.yml</code> at the root of your project : </p>
+<pre><code class="language-yaml">language: rust
+rust:
+  - stable
+
+matrix:
+  allow_failures:
+    - rust: nightly
+  fast_finish: true
+
+</code></pre>
+<h1><a class="header" href="#wip-writting-a-common-crate" id="wip-writting-a-common-crate">(WIP) Writting a common crate</a></h1>
+<h1><a class="header" href="#todo--rename-common-to-backend" id="todo--rename-common-to-backend">TODO : rename common to backend</a></h1>
+<p>This might seems pointless to you for know but we are going to write a crate with only Plain Old Rust Structs. 
+Since we will need our frontend and backend aplications to exchange HTTP request it will at least save us the duplication of these structs.
+In the future if we want to build some tooling around our app, let's say a nice cli tool, or expose our api publicly this will be much easier. </p>
+<p>We will also need to serialize and deserialise to and from json.
+For that we will use the amazing <a href="https://serde.rs/">serde</a> crate. </p>
+<p>First we need to add the serde dependency to our <code>movie-night-backend</code> crate.
+Add the following line to <code>movie-night-common/Cargo.toml</code> : </p>
+<pre><code class="language-toml">[dependencies]
+serde = { version = &quot;1.0&quot;, features = [&quot;derive&quot;] }
+</code></pre>
+<p>That's it you can run <code>cargo build</code> and start writing the common crate at the same time. </p>
+<p>For now just append the folowing to <code>movie-night-common/lib.rs</code></p>
+<pre><code>use movie_night_db::users::*;
+
+/// User without its password
+#[derive(Serialize, Deserialize, Debug)]
+pub struct UserDto {
+    pub id: i32,
+    pub nickname: String,
+    pub email: String,
+}
+
+/// Add a new user
+#[derive(Serialize, Deserialize, Debug)]
+pub struct NewUserDto {
+    pub nickname: String,
+    pub email: String,
+    pub password: String,
+}
+
+impl Into&lt;NewUser&gt; for NewUserDto {
+    fn into(self) -&gt; NewUser {
+        NewUser {
+            nick: self.nickname,
+            email: self.email,
+            password_hash: self.password, // TODO: Bcrypt here
+        }
+    }
+}
+impl From&lt;&amp;User&gt; for UserDto {
+    fn from(user: &amp;User) -&gt; Self {
+        UserDto {
+            id: user.id,
+            nickname: user.nick.clone(),
+            email: user.email.clone(),
+        }
+    }
+}
+
+</code></pre>
+<p>As you can see we have two Data transfer object here, one for retrieving user with there ids and the other specifically for posting new users and persist there password in database. 
+Quite simple actually, for those coming from the Java world, the serde <code>Serialize</code> and <code>Deserialize</code> annotation can be compared to Jackson.
+Actually the annotation syntax is almost the same. </p>
+<p>Now that we have some basic struct to post and retrieve new users, lets go ahead and write a web server! </p>
+<h1><a class="header" href="#writting-a-common-crate" id="writting-a-common-crate">Writting a common crate</a></h1>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
